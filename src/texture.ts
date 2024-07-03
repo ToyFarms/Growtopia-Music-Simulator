@@ -69,11 +69,11 @@ export class Texture extends GLObject {
   }
 
   bind(): void {
-    this.gl.bindTexture(this.id, this.texture);
+    this.gl.bindTexture(this.gl.TEXTURE_2D, this.texture);
   }
 
   unbind(): void {
-    this.gl.bindTexture(0, null);
+    this.gl.bindTexture(this.gl.TEXTURE_2D, null);
   }
 
   delete(): void {

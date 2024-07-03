@@ -41,7 +41,7 @@ import { Texture } from "./texture.ts";
   }
 
   const atlas_info: AtlasInfo = await fetch(
-    "../assets/note_atlas.json",
+    "note_atlas.json",
   ).then(async (r) => await r.json());
 
   const get_texture_bound = (index: number): vec4 => {
@@ -55,7 +55,7 @@ import { Texture } from "./texture.ts";
     ] as vec4;
   }
 
-  const atlas_tex = new Texture("../assets/note_atlas.png");
+  const atlas_tex = new Texture("note_atlas.png");
 
   const input_handler = new InputHandler();
   const camera = new Camera(canvas.width, canvas.height);

@@ -1,19 +1,20 @@
 {
-  "name": "frontend",
-  "private": true,
-  "version": "0.0.0",
+  "name": "Growtopia Note Simulator",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
+    "deploy": "npm run build && gh-pages -d dist",
     "preview": "vite preview"
   },
   "devDependencies": {
+    "@types/gl-matrix": "^3.2.0",
     "typescript": "^5.2.2",
-    "vite": "^5.3.1"
+    "vite": "^5.3.1",
+    "gh-pages": "^6.1.1"
   },
   "dependencies": {
-    "@types/gl-matrix": "^3.2.0",
     "gl-matrix": "^3.4.3",
     "webgl-math": "^1.1.0"
   }

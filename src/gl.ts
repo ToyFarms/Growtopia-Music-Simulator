@@ -33,6 +33,11 @@ export abstract class GLContext {
 
 export abstract class GLObject extends GLContext {
   id: number;
+  constructor() {
+    super()
+
+    this.id = 0;
+  }
 
   abstract bind(): void;
   abstract unbind(): void;

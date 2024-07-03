@@ -1,6 +1,6 @@
 import { mat4, vec2 } from "gl-matrix";
 import { InputHandler, Key } from "./input";
-import { lerp, lerp2, screen_to_world, set_if_close } from "./utils";
+import { screen_to_world } from "./utils";
 
 export class Camera {
   width: number;
