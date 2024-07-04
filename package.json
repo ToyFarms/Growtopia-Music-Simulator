@@ -10,9 +10,9 @@
   },
   "devDependencies": {
     "@types/gl-matrix": "^3.2.0",
+    "gh-pages": "^6.1.1",
     "typescript": "^5.2.2",
-    "vite": "^5.3.1",
-    "gh-pages": "^6.1.1"
+    "vite": "^5.3.1"
   },
   "dependencies": {
     "gl-matrix": "^3.4.3",

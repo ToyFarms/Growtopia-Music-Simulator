@@ -28,12 +28,20 @@ export class Camera {
   }
 
   private handle_zoom(input: InputHandler) {
-    this.zoom += -Math.sign(input.mouse.wheel.y) * (this.zoom * 0.6);
+    let zoom_point = input.mouse.pos;
+    if ("ontouchstart" in document.documentElement) {
+      zoom_point = [window.innerWidth / 2, window.innerHeight / 2];
+      this.zoom += -Math.sign(input.mouse.wheel.y) * this.zoom * 0.1;
+    }
+    else {
+      this.zoom += -Math.sign(input.mouse.wheel.y) * (this.zoom * 0.6);
+    }
+
     this.zoom = Math.min(Math.max(this.zoom, 0.1), 10);
 
-    const pre = screen_to_world(this, input.mouse.pos);
+    const pre = screen_to_world(this, zoom_point);
     this.update_projection_matrix();
-    const post = screen_to_world(this, input.mouse.pos);
+    const post = screen_to_world(this, zoom_point);
 
     this.pos[0] += pre[0] - post[0];
     this.pos[1] += pre[1] - post[1];

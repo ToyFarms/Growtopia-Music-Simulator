@@ -83,6 +83,12 @@ import { Texture } from "./texture.ts";
   const render = (now: number) => {
     if (!gl) return;
 
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    gl.viewport(0, 0, canvas.width, canvas.height);
+    camera.width = canvas.width;
+    camera.height = canvas.height;
+
     const dt = last_frame_time > 0 ? (now - last_frame_time) / 1000 : 1;
     last_frame_time = now;
 
@@ -109,6 +115,5 @@ import { Texture } from "./texture.ts";
     requestAnimationFrame(render);
   };
 
-  gl.viewport(0, 0, canvas.width, canvas.height);
   requestAnimationFrame(render);
 })();

@@ -235,17 +235,44 @@ export class InputHandler {
     document.addEventListener("keyup", (e) => this.handle_key(e, false));
     document.addEventListener("mousedown", (e) => this._mousedown(e, true));
     document.addEventListener("mouseup", (e) => this._mousedown(e, false));
-    document.addEventListener("wheel", (e) => this.wheel(e));
+    document.addEventListener("wheel", (e) => this.wheel(e.deltaX, e.deltaY, e.deltaZ));
     document.addEventListener("mousemove", (e) => this._mousemove(e))
+
+    const get_touch_pos = (e: TouchEvent): vec2 => {
+      if (e.touches.length === 1)
+        return [e.touches[0].pageX, e.touches[0].pageY];
+      else if (e.touches.length >= 2)
+        return [
+          (e.touches[0].pageX + e.touches[1].pageX) / 2,
+          (e.touches[0].pageY + e.touches[1].pageY) / 2,
+      ];
+      else return [0, 0];
+    }
+    const get_touch_distance = (touch: TouchList) => {
+      if (touch.length < 2) return 0;
+      return Math.sqrt((touch[1].pageX - touch[0].pageX) ** 2 + (touch[1].pageY - touch[0].pageY) ** 2);
+    }
+
+    let initial_distance = 0;
     document.addEventListener("touchstart", (e) => {
-      this.mouse.left = true;
-      this.mouse.pos = [e.touches[0].pageX, e.touches[0].pageY]
+      if (e.touches.length < 2)
+      {
+        this.mouse.left = true;
+        this.mouse.pos = get_touch_pos(e);
+      }
+      initial_distance = get_touch_distance(e.touches);
     });
     document.addEventListener("touchmove", (e) => {
-      this.mouse.pos = [e.touches[0].pageX, e.touches[0].pageY]
+      this.mouse.pos = get_touch_pos(e);
+
+      const distance = get_touch_distance(e.touches);
+      if (initial_distance !== 0) {
+        this.wheel(0, initial_distance - distance, 0);
+      }
     });
     document.addEventListener("touchend", () => {
       this.mouse.left = false;
+      initial_distance = 0;
     });
   }
 
@@ -265,10 +292,10 @@ export class InputHandler {
     this.mouse.pos[1] = e.y;
   }
 
-  private wheel(e: WheelEvent) {
-    this.mouse.wheel.x = e.deltaX;
-    this.mouse.wheel.y = e.deltaY;
-    this.mouse.wheel.z = e.deltaZ;
+  private wheel(x: number, y: number, z: number) {
+    this.mouse.wheel.x = x;
+    this.mouse.wheel.y = y;
+    this.mouse.wheel.z = z;
 
     if (!this.raf_id) {
       this.raf_id = requestAnimationFrame(() => {
