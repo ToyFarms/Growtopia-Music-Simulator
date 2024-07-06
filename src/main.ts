@@ -59,6 +59,7 @@ import { Texture } from "./texture.ts";
 
   const input_handler = new InputHandler();
   const camera = new Camera(canvas.width, canvas.height);
+
   const quads: Quad[] = [];
   const size = 32;
   for (let i = 0; i < 100; i++) {

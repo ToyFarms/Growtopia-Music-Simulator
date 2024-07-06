@@ -259,14 +259,15 @@ export class InputHandler {
       {
         this.mouse.left = true;
         this.mouse.pos = get_touch_pos(e);
+        return;
       }
       initial_distance = get_touch_distance(e.touches);
     });
     document.addEventListener("touchmove", (e) => {
       this.mouse.pos = get_touch_pos(e);
 
-      const distance = get_touch_distance(e.touches);
       if (initial_distance !== 0) {
+        const distance = get_touch_distance(e.touches);
         this.wheel(0, initial_distance - distance, 0);
       }
     });

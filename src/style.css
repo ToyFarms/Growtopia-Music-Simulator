@@ -3,6 +3,11 @@ body {
   overflow: hidden;
 }
 
+html {
+  height: 100%;
+  touch-action: pan-x pan-y;
+}
+
 #console {
   background-color: #131313;
   height: 25%;
