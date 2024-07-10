@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  overflow: hidden;
+}
+
+html {
+  height: 100%;
+  touch-action: pan-x pan-y;
+}
+
+#root {
+  height: 100vh;
+}

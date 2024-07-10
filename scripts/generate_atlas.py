@@ -13,7 +13,7 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("dir", help="Directory with the images")
     parser.add_argument("-s", "--size", help="Size of each image, ex='100x50'", type=parse_size, default=None)
-    parser.add_argument("-o", "--output", help="Size of each image, ex='100x50'", default=None)
+    parser.add_argument("-o", "--output", help="Output filename, no extension", default=None)
 
     args = parser.parse_args()
 

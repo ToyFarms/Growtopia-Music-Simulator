@@ -1,0 +1,1 @@
+export { ImageConverterPage } from "./ImageConverter";

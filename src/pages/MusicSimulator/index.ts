@@ -1,0 +1,1 @@
+export { MusicSimulatorPage } from "./MusicSimulator";
