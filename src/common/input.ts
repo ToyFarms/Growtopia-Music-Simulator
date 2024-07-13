@@ -233,7 +233,9 @@ export class InputHandler {
       pos: [0, 0],
       abs_pos: [0, 0],
     };
-    this.raf_id = null; this.element = element || null; document.addEventListener("keydown", (e) => this.handle_key(e, true));
+    this.raf_id = null;
+    this.element = element || null;
+    document.addEventListener("keydown", (e) => this.handle_key(e, true));
     document.addEventListener("keyup", (e) => this.handle_key(e, false));
     document.addEventListener("mousedown", (e) => this._mousedown(e, true));
     document.addEventListener("mouseup", (e) => this._mousedown(e, false));
@@ -242,7 +244,7 @@ export class InputHandler {
     );
     document.addEventListener("mousemove", (e) => this._mousemove(e));
 
-    const hammer = new Hammer(this.element || document.getElementById("app")!);
+    const hammer = new Hammer(this.element || document.getElementById("root")!);
     hammer.get("pinch").set({ enable: true });
 
     hammer.on("pan", (e) => {
@@ -256,8 +258,7 @@ export class InputHandler {
       if (this.element) {
         const rect = this.element.getBoundingClientRect();
         this.set_mouse_pos([rect.x + rect.width / 2, rect.y + rect.height / 2]);
-      }
-      else {
+      } else {
         this.set_mouse_pos([window.innerWidth / 2, window.innerHeight / 2]);
       }
 
@@ -268,7 +269,7 @@ export class InputHandler {
     document.addEventListener("touchend", () => {
       this.mouse.left = false;
       last_scale = 0;
-    })
+    });
   }
 
   private in_focus(): boolean {

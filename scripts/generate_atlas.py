@@ -22,11 +22,12 @@ def main() -> None:
 
     side = math.ceil(math.sqrt(len(files)))
     atlas = Image.new("RGBA", (side * each_size[0], side * each_size[1]))
-    info: dict[str, int | tuple[int, int]] = {}
+    info: dict[str, int | tuple[int, int] | dict[str, tuple[int, int]]] = {}
     info["size"] = atlas.size
     info["tex_size"] = each_size
     info["tex_count"] = len(files)
     info["tex_in_row"] = side
+    textures: dict[str, tuple[int, int]] = {}
 
     for i, file in enumerate(files):
         size: tuple[int, int] = args.size if args.size else each_size
@@ -34,7 +35,8 @@ def main() -> None:
         y = (i // side) * size[1]
 
         atlas.paste(Image.open(file), (x, y))
-        info[file.stem] = (x, y)
+        textures[file.stem] = (x, y)
+    info["textures"] = textures
 
     out_name: str = args.output if args.output else Path(args.dir).name
     atlas.save(f"{out_name}.png")

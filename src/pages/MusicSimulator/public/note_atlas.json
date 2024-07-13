@@ -9,136 +9,138 @@
   ],
   "tex_count": 33,
   "tex_in_row": 6,
-  "bass": [
-    0,
-    0
-  ],
-  "blank": [
-    32,
-    0
-  ],
-  "drums": [
-    64,
-    0
-  ],
-  "electric_guitar": [
-    96,
-    0
-  ],
-  "flat_bass": [
-    128,
-    0
-  ],
-  "flat_electric_guitar": [
-    160,
-    0
-  ],
-  "flat_flute": [
-    0,
-    32
-  ],
-  "flat_lyre": [
-    32,
-    32
-  ],
-  "flat_mexican_trumpet": [
-    64,
-    32
-  ],
-  "flat_piano": [
-    96,
-    32
-  ],
-  "flat_sax": [
-    128,
-    32
-  ],
-  "flat_spanish_guitar": [
-    160,
-    32
-  ],
-  "flat_violin": [
-    0,
-    64
-  ],
-  "flute": [
-    32,
-    64
-  ],
-  "lyre": [
-    64,
-    64
-  ],
-  "mexican_trumpet": [
-    96,
-    64
-  ],
-  "piano": [
-    128,
-    64
-  ],
-  "repeat_begin": [
-    160,
-    64
-  ],
-  "repeat_end": [
-    0,
-    96
-  ],
-  "sax": [
-    32,
-    96
-  ],
-  "sharp_bass": [
-    64,
-    96
-  ],
-  "sharp_electric_guitar": [
-    96,
-    96
-  ],
-  "sharp_flute": [
-    128,
-    96
-  ],
-  "sharp_lyre": [
-    160,
-    96
-  ],
-  "sharp_mexican_trumpet": [
-    0,
-    128
-  ],
-  "sharp_piano": [
-    32,
-    128
-  ],
-  "sharp_sax": [
-    64,
-    128
-  ],
-  "sharp_spanish_guitar": [
-    96,
-    128
-  ],
-  "sharp_violin": [
-    128,
-    128
-  ],
-  "spanish_guitar": [
-    160,
-    128
-  ],
-  "spooky": [
-    0,
-    160
-  ],
-  "violin": [
-    32,
-    160
-  ],
-  "winterfest": [
-    64,
-    160
-  ]
+  "textures": {
+    "bass": [
+      0,
+      0
+    ],
+    "blank": [
+      32,
+      0
+    ],
+    "drums": [
+      64,
+      0
+    ],
+    "electric_guitar": [
+      96,
+      0
+    ],
+    "flat_bass": [
+      128,
+      0
+    ],
+    "flat_electric_guitar": [
+      160,
+      0
+    ],
+    "flat_flute": [
+      0,
+      32
+    ],
+    "flat_lyre": [
+      32,
+      32
+    ],
+    "flat_mexican_trumpet": [
+      64,
+      32
+    ],
+    "flat_piano": [
+      96,
+      32
+    ],
+    "flat_sax": [
+      128,
+      32
+    ],
+    "flat_spanish_guitar": [
+      160,
+      32
+    ],
+    "flat_violin": [
+      0,
+      64
+    ],
+    "flute": [
+      32,
+      64
+    ],
+    "lyre": [
+      64,
+      64
+    ],
+    "mexican_trumpet": [
+      96,
+      64
+    ],
+    "piano": [
+      128,
+      64
+    ],
+    "repeat_begin": [
+      160,
+      64
+    ],
+    "repeat_end": [
+      0,
+      96
+    ],
+    "sax": [
+      32,
+      96
+    ],
+    "sharp_bass": [
+      64,
+      96
+    ],
+    "sharp_electric_guitar": [
+      96,
+      96
+    ],
+    "sharp_flute": [
+      128,
+      96
+    ],
+    "sharp_lyre": [
+      160,
+      96
+    ],
+    "sharp_mexican_trumpet": [
+      0,
+      128
+    ],
+    "sharp_piano": [
+      32,
+      128
+    ],
+    "sharp_sax": [
+      64,
+      128
+    ],
+    "sharp_spanish_guitar": [
+      96,
+      128
+    ],
+    "sharp_violin": [
+      128,
+      128
+    ],
+    "spanish_guitar": [
+      160,
+      128
+    ],
+    "spooky": [
+      0,
+      160
+    ],
+    "violin": [
+      32,
+      160
+    ],
+    "winterfest": [
+      64,
+      160
+    ]
+  }
 }

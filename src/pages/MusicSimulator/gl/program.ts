@@ -6,7 +6,6 @@ export enum ShaderType {
 }
 
 export interface ShaderStruct {
-  id: string;
   type: ShaderType;
   source: string;
 }
@@ -32,7 +31,6 @@ export class Program extends GLContext {
     this.name = name;
 
     this.process_shaders(shaders);
-    GLContext.add_program(this);
   }
 
   bind(): void {

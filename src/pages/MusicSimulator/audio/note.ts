@@ -17,6 +17,16 @@ export class Note {
     A: 9,
     B: 11,
   };
+  static note_indices: {[key: string]: number} = {
+    C: 0,
+    D: 1,
+    E: 2,
+    F: 3,
+    G: 4,
+    A: 5,
+    B: 6,
+  }
+
   static accidentals = [1, 3, 6, 8, 10];
   static no_sharp_key = [4, 11];
   static no_flat_key = [5, 0];
@@ -60,6 +70,17 @@ export class Note {
     if (this.is_accidental())
       return `${Note.mapping[this.note + off[prefer]]}${prefer === "sharp" ? "#" : "b"}${this.octave}`;
     return `${Note.mapping[this.note]}${this.octave}`;
+  }
+
+  to_parts(prefer: "sharp" | "flat" = "flat"): [string, string | null, number] {
+    const off = {
+      sharp: -1,
+      flat: 1,
+    };
+
+    if (this.is_accidental())
+      return [Note.mapping[this.note + off[prefer]], prefer, this.octave];
+    return [Note.mapping[this.note], null, this.octave];
   }
 
   static from_code(code: number) {
@@ -143,5 +164,15 @@ export class Note {
     let off = 0;
     if (signature) off = signature === "#" ? 1 : -1;
     return new Note(Note.mappingT[note] + off, parseInt(octave, 10) || 0);
+  }
+
+  transpose(tone: number): Note {
+    const octave = Math.floor(tone / 12);
+    const note = tone % 12;
+
+    this.octave += octave;
+    this.note += note;
+
+    return this;
   }
 }

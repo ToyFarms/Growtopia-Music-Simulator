@@ -1,6 +1,6 @@
-import { vec2, vec4 } from "gl-matrix";
+import { GLContext } from "./context";
 
-export class Quad {
+export class Quad extends GLContext {
   static vertices = new Float32Array([
     -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5,
   ]);
@@ -9,15 +9,43 @@ export class Quad {
   static vertex_count = Quad.vertices.length / 2;
   static index_count = Quad.indices.length;
 
-  pos: vec2;
-  size: vec2;
-  texcoord: vec4;
-  rotation: number;
+  static sizeof_float = Float32Array.BYTES_PER_ELEMENT;
+  static vbo: WebGLBuffer | null;
+  static ibo: WebGLBuffer | null;
 
-  constructor(pos: vec2, size: vec2, texcoord: vec4, rotation?: number) {
-    this.pos = pos;
-    this.size = size;
-    this.texcoord = texcoord;
-    this.rotation = rotation || 0;
+  static get_vbo(): WebGLBuffer | null {
+    if (!Quad.vbo) {
+      const vbo = this.gl.createBuffer();
+      this.gl.bindBuffer(this.gl.ARRAY_BUFFER, vbo);
+      this.gl.bufferData(this.gl.ARRAY_BUFFER, Quad.vertices, this.gl.STATIC_DRAW);
+      Quad.vbo = vbo;
+    }
+
+    this.gl.vertexAttribPointer(
+      0,
+      2,
+      this.gl.FLOAT,
+      false,
+      2 * Quad.sizeof_float,
+      0,
+    );
+    this.gl.enableVertexAttribArray(0);
+
+    return Quad.vbo;
+  }
+
+  static get_ibo(): WebGLBuffer | null {
+    if (!Quad.ibo) {
+      const ibo = this.gl.createBuffer();
+      this.gl.bindBuffer(this.gl.ELEMENT_ARRAY_BUFFER, ibo);
+      this.gl.bufferData(
+        this.gl.ELEMENT_ARRAY_BUFFER,
+        Quad.indices,
+        this.gl.STATIC_DRAW,
+      );
+      Quad.ibo = ibo;
+    }
+
+    return Quad.ibo
   }
 }

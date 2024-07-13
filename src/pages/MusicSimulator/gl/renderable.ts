@@ -6,4 +6,5 @@ export abstract class Renderable {
     this.gl = gl;
   }
   abstract render(camera: Camera): void;
+  abstract cleanup(): void;
 }

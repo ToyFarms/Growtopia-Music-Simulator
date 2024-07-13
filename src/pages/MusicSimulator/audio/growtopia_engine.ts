@@ -55,6 +55,10 @@ export class GTAudioEngine extends AudioEngine {
   }
 
   play_from_note(note: Note, instrument: string) {
-    this.sources.find((v) => v.src.includes(`${instrument}_${note.to_code()}.wav`))?.audio?.play();
+    const source = this.sources.find((v) => v.src.includes(`${instrument}_${note.to_code()}.wav`))?.audio;
+    if (source) {
+      source.volume = 0.1
+    }
+    source?.play();
   }
 }

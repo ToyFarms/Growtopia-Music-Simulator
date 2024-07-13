@@ -21,7 +21,10 @@ export const parse_midi = async (src: string): Promise<MidiEvent[]> => {
         notes[e.noteOn.noteNumber] = { start: timestamp };
       } else if (event.noteOff) {
         const e = event as IMidiNoteOffEvent;
-        const start = notes[e.noteOff.noteNumber]!.start;
+        const note = notes[e.noteOff.noteNumber];
+        if (!note)
+          continue;
+        const start = note.start;
 
         result.push({
           start: start,

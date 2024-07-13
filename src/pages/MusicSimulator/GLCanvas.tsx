@@ -1,12 +1,10 @@
 import { useEffect, useRef } from "react";
 import { WebGLApp } from "./gl";
 import { GLContext } from "./gl/context";
-import { GTNoteRenderable } from "./gl/renderable/gt_note_renderable";
 
 export const GLCanvas = () => {
   const canvas_ref = useRef<HTMLCanvasElement | null>(null);
   const gl_ref = useRef<WebGL2RenderingContext | null>(null);
-
   useEffect(() => {
     const canvas = canvas_ref.current;
     if (!canvas) {
@@ -21,7 +19,6 @@ export const GLCanvas = () => {
     }
 
     GLContext.create(gl);
-    GLContext.add_renderable(new GTNoteRenderable(gl));
     const app = new WebGLApp(canvas);
     gl_ref.current = gl;
 

@@ -2,8 +2,10 @@ import { InputHandler } from "../../../common/input";
 import { Camera } from "./camera";
 import { GLContext } from "./context";
 import { Program, ShaderType } from "./program";
-import default_frag from "./shaders/frag.glsl?raw";
-import default_vert from "./shaders/vert.glsl?raw";
+import default_frag from "./shaders/default.frag.glsl?raw";
+import default_vert from "./shaders/default.vert.glsl?raw";
+import batch_frag from "./shaders/batch.frag.glsl?raw";
+import batch_vert from "./shaders/batch.vert.glsl?raw";
 
 export class WebGLApp extends GLContext {
   gl: WebGL2RenderingContext;
@@ -28,18 +30,26 @@ export class WebGLApp extends GLContext {
     resize_canvas();
     window.addEventListener("resize", resize_canvas);
 
-    new Program("default", [
+    GLContext.add_program(new Program("default", [
       {
-        id: "default",
         type: ShaderType.FRAGMENT,
         source: default_frag,
       },
       {
-        id: "default",
         type: ShaderType.VERTEX,
         source: default_vert,
       },
-    ]);
+    ]));
+    GLContext.add_program(new Program("batch", [
+      {
+        type: ShaderType.FRAGMENT,
+        source: batch_frag,
+      },
+      {
+        type: ShaderType.VERTEX,
+        source: batch_vert,
+      }
+    ]));
   }
 
   render(dt: number) {

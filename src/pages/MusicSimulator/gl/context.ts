@@ -25,7 +25,8 @@ export class GLContext {
     return GLContext.programs[name];
   }
 
-  static add_renderable(obj: Renderable) {
+  static add_renderable(obj: Renderable): number {
     this.objects.push(obj);
+    return this.objects.length - 1;
   }
 }

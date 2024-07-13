@@ -118,6 +118,8 @@ export class BatchRenderable extends Renderable {
   }
 
   render() {
+    this.gl.bindBuffer(this.gl.ARRAY_BUFFER, this.vbo);
+    this.gl.bindBuffer(this.gl.ELEMENT_ARRAY_BUFFER, this.ibo);
     this.gl.drawElementsInstanced(
       this.gl.TRIANGLES,
       this.indices.length,
@@ -125,5 +127,10 @@ export class BatchRenderable extends Renderable {
       0,
       this.instances.length,
     );
+  }
+
+  cleanup() {
+    this.gl.deleteBuffer(this.vbo);
+    this.gl.deleteBuffer(this.ibo);
   }
 }
